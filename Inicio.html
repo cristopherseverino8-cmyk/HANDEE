@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HANDEE SRL | Seguridad & Tecnología</title>
+
+<style>
+
+/* ================= RESET ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+:root{
+    --principal:#007a84;
+    --secundario:#0097a7;
+    --oscuro:#0e2b33;
+    --claro:#f4f7fa;
+    --gris:#555;
+}
+
+body{
+    background:var(--claro);
+    color:var(--oscuro);
+    line-height:1.6;
+}
+
+/* ================= PROGRESS BAR ================= */
+#progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    height:4px;
+    width:0%;
+    background:var(--secundario);
+    z-index:5000;
+}
+
+/* ================= NAVBAR PROFESIONAL ================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:white;
+    padding:15px 60px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    z-index:4000;
+}
+
+.nav-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.logo img{
+    width:60px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.1);
+}
+
+/* MENU */
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    align-items:center;
+}
+
+nav ul li{
+    position:relative;
+}
+
+nav ul li a{
+    text-decoration:none;
+    font-weight:600;
+    color:var(--oscuro);
+    padding:8px 12px;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:var(--principal);
+}
+
+/* DROPDOWN */
+.dropdown-menu{
+    position:absolute;
+    top:40px;
+    left:0;
+    background:white;
+    border-radius:12px;
+    min-width:220px;
+    display:none;
+    flex-direction:column;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    overflow:hidden;
+}
+
+.dropdown.active .dropdown-menu{
+    display:flex;
+}
+
+.dropdown-menu li a{
+    padding:12px 18px;
+    display:block;
+}
+
+.dropdown-menu li a:hover{
+    background:#e0f7fa;
+}
+
+/* HAMBURGUESA */
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    nav ul{
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+        background:white;
+        flex-direction:column;
+        display:none;
+        padding:20px 0;
+        box-shadow:0 10px 25px rgba(0,0,0,.1);
+    }
+
+    nav ul.show{
+        display:flex;
+    }
+
+    .dropdown-menu{
+        position:static;
+        box-shadow:none;
+    }
+}
+
+/* ================= HEADER ================= */
+header{
+    margin-top:110px;
+    min-height:600px;
+    display:flex;
+    align-items:center;
+    padding:60px;
+    background:linear-gradient(135deg,#eef6f8,#f6ebe3);
+}
+
+/* (todo tu resto del CSS sigue igual) */
+
+</style>
+</head>
+
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV CORREGIDO -->
+<nav class="navbar">
+<div class="nav-container">
+
+    <div class="logo">
+        <img src="Imagenes/Handee - Foto de perfil - 1080x1080 px.jpg" alt="Logo">
+    </div>
+
+    <div class="menu-toggle" id="menuToggle">☰</div>
+
+    <ul id="menu">
+        <li><a href="Inicio.html">Inicio</a></li>
+
+        <li class="dropdown" id="dropdown">
+            <a href="#" id="dropdownToggle">Servicios ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="Instalacion.html">Instalación</a></li>
+                <li><a href="Reparacion.html">Reparación</a></li>
+                <li><a href="mantenimiento.html">Mantenimiento</a></li>
+                <li><a href="asesoria.html">Asesoría</a></li>
+                <li><a href="Quienes somos.html">Quiénes Somos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </li>
+
+        <li><a href="#empresa">Empresa</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+
+</div>
+</nav>
+
+<!-- TODO TU RESTO DEL HTML (header, slider, secciones, ubicación, footer) QUEDA EXACTAMENTE IGUAL -->
+
+<script>
+
+/* PROGRESS BAR */
+window.addEventListener("scroll",()=>{
+    let h=document.documentElement.scrollHeight-window.innerHeight;
+    let p=(document.documentElement.scrollTop/h)*100;
+    document.getElementById("progress-bar").style.width=p+"%";
+});
+
+/* MENU HAMBURGUESA */
+const menuToggle=document.getElementById("menuToggle");
+const menu=document.getElementById("menu");
+menuToggle.addEventListener("click",()=>{
+    menu.classList.toggle("show");
+});
+
+/* DROPDOWN CLICK */
+const dropdown=document.getElementById("dropdown");
+const dropdownToggle=document.getElementById("dropdownToggle");
+
+dropdownToggle.addEventListener("click",(e)=>{
+    e.preventDefault();
+    dropdown.classList.toggle("active");
+});
+
+</script>
+
+</body>
+</html>
